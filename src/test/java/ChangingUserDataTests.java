@@ -50,7 +50,8 @@ public class ChangingUserDataTests {
     public void testChangingUserData() {
         UserPersonalData user = new UserPersonalData(email, name);
         apiClient.edit(user)
-                .then().body("success", equalTo(true))
+                .then().statusCode(200)
+                .and().body("success", equalTo(true))
                 .and().body("user.email", equalTo(email))
                 .and().body("user.name", equalTo(name));
     }
